@@ -1,0 +1,4 @@
+com/auth/authservice/integration/AuthControllerIntegrationTest.class
+com/auth/authservice/service/AuthServiceTest.class
+com/auth/authservice/service/UserServiceTest.class
+com/auth/authservice/service/JwtServiceTest.class
