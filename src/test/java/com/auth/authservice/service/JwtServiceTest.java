@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-@DisplayName("Testes do serviço JWT")
+@DisplayName("JWT service tests")
 class JwtServiceTest {
 
     @Mock
@@ -49,7 +49,7 @@ class JwtServiceTest {
     }
 
     @Test
-    @DisplayName("Deve gerar token de acesso válido")
+    @DisplayName("Should generate valid access token")
     void shouldGenerateValidAccessToken() {
         String token = jwtService.generateAccessToken(testUser);
 
@@ -57,7 +57,7 @@ class JwtServiceTest {
     }
 
     @Test
-    @DisplayName("Deve extrair ID do usuário do token")
+    @DisplayName("Should extract user ID from token")
     void shouldExtractUserIdFromToken() {
         String token = jwtService.generateAccessToken(testUser);
         UUID extractedId = jwtService.extractUserId(token);
@@ -66,7 +66,7 @@ class JwtServiceTest {
     }
 
     @Test
-    @DisplayName("Deve extrair email do token")
+    @DisplayName("Should extract email from token")
     void shouldExtractEmailFromToken() {
         String token = jwtService.generateAccessToken(testUser);
         String extractedEmail = jwtService.extractEmail(token);
@@ -75,7 +75,7 @@ class JwtServiceTest {
     }
 
     @Test
-    @DisplayName("Deve extrair role do token")
+    @DisplayName("Should extract role from token")
     void shouldExtractRoleFromToken() {
         String token = jwtService.generateAccessToken(testUser);
         String extractedRole = jwtService.extractRole(token);
@@ -84,7 +84,7 @@ class JwtServiceTest {
     }
 
     @Test
-    @DisplayName("Deve validar token válido")
+    @DisplayName("Should validate valid token")
     void shouldValidateValidToken() {
         String token = jwtService.generateAccessToken(testUser);
 
@@ -92,13 +92,13 @@ class JwtServiceTest {
     }
 
     @Test
-    @DisplayName("Deve rejeitar token inválido")
+    @DisplayName("Should reject invalid token")
     void shouldRejectInvalidToken() {
         assertThat(jwtService.isTokenValid("invalid.token.here")).isFalse();
     }
 
     @Test
-    @DisplayName("Deve gerar refresh token como UUID")
+    @DisplayName("Should generate refresh token as UUID")
     void shouldGenerateRefreshTokenAsUUID() {
         String refreshToken = jwtService.generateRefreshToken();
 

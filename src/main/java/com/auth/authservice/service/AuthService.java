@@ -62,12 +62,12 @@ public class AuthService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> {
                     loginAttemptService.loginFailed(email);
-                    return new InvalidCredentialsException("Credenciais inválidas");
+                    return new InvalidCredentialsException("Invalid credentials");
                 });
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             loginAttemptService.loginFailed(email);
-            throw new InvalidCredentialsException("Credenciais inválidas");
+            throw new InvalidCredentialsException("Invalid credentials");
         }
 
         if (!user.isActive()) {

@@ -26,7 +26,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Testes do serviço de usuário")
+@DisplayName("User service tests")
 class UserServiceTest {
 
     @Mock private UserRepository userRepository;
@@ -61,7 +61,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve retornar dados do usuário atual")
+    @DisplayName("Should return current user data")
     void shouldReturnCurrentUserData() {
         when(userMapper.toResponse(testUser)).thenReturn(testUserResponse);
 
@@ -72,7 +72,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve atualizar nome do usuário com sucesso")
+    @DisplayName("Should update user name successfully")
     void shouldUpdateUserNameSuccessfully() {
         UpdateUserRequest request = new UpdateUserRequest();
         request.setName("Updated Name");
@@ -87,7 +87,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção ao atualizar para email já existente")
+    @DisplayName("Should throw exception when updating to existing email")
     void shouldThrowExceptionWhenUpdatingToExistingEmail() {
         UpdateUserRequest request = new UpdateUserRequest();
         request.setEmail("other@example.com");
@@ -99,7 +99,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve alterar senha com sucesso")
+    @DisplayName("Should change password successfully")
     void shouldChangePasswordSuccessfully() {
         ChangePasswordRequest request = new ChangePasswordRequest();
         request.setCurrentPassword("oldPassword");
@@ -115,7 +115,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção com senha atual incorreta")
+    @DisplayName("Should throw exception with wrong current password")
     void shouldThrowExceptionWithWrongCurrentPassword() {
         ChangePasswordRequest request = new ChangePasswordRequest();
         request.setCurrentPassword("wrongPassword");
@@ -128,7 +128,7 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Deve deletar usuário com sucesso")
+    @DisplayName("Should delete user successfully")
     void shouldDeleteUserSuccessfully() {
         assertThatCode(() -> userService.deleteMe(testUser))
                 .doesNotThrowAnyException();

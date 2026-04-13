@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @Testcontainers
 @ActiveProfiles("test")
-@DisplayName("Testes de integração do AuthController")
+@DisplayName("AuthController integration tests")
 class AuthControllerIntegrationTest {
 
     @Container
@@ -45,7 +45,7 @@ class AuthControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Test
-    @DisplayName("Deve registrar um novo usuário com sucesso")
+    @DisplayName("Should register new user successfully")
     void shouldRegisterNewUserSuccessfully() throws Exception {
         RegisterRequest request = new RegisterRequest();
         request.setName("Integration Test User");
@@ -61,7 +61,7 @@ class AuthControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("Deve falhar ao registrar com email inválido")
+    @DisplayName("Should fail registration with invalid email")
     void shouldFailRegisterWithInvalidEmail() throws Exception {
         RegisterRequest request = new RegisterRequest();
         request.setName("Test User");
@@ -75,7 +75,7 @@ class AuthControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("Deve fazer login com credenciais válidas")
+    @DisplayName("Should login with valid credentials")
     void shouldLoginWithValidCredentials() throws Exception {
         // First register
         String uniqueEmail = "login-test-" + System.currentTimeMillis() + "@test.com";
@@ -102,7 +102,7 @@ class AuthControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("Deve falhar ao fazer login com senha incorreta")
+    @DisplayName("Should fail login with wrong password")
     void shouldFailLoginWithWrongPassword() throws Exception {
         LoginRequest request = new LoginRequest();
         request.setEmail("nonexistent@test.com");
@@ -115,7 +115,7 @@ class AuthControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("Deve validar token de acesso")
+    @DisplayName("Should validate access token")
     void shouldValidateAccessToken() throws Exception {
         // Register and get token
         String uniqueEmail = "validate-test-" + System.currentTimeMillis() + "@test.com";

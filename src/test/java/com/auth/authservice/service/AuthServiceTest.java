@@ -30,7 +30,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Testes do serviço de autenticação")
+@DisplayName("Auth service tests")
 class AuthServiceTest {
 
     @Mock private UserRepository userRepository;
@@ -59,7 +59,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve registrar usuário com sucesso")
+    @DisplayName("Should register user successfully")
     void shouldRegisterUserSuccessfully() {
         RegisterRequest request = new RegisterRequest();
         request.setName("Test User");
@@ -85,7 +85,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção ao registrar email já existente")
+    @DisplayName("Should throw exception when email already exists")
     void shouldThrowExceptionWhenEmailAlreadyExists() {
         RegisterRequest request = new RegisterRequest();
         request.setEmail("test@example.com");
@@ -98,7 +98,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve fazer login com sucesso")
+    @DisplayName("Should login successfully")
     void shouldLoginSuccessfully() {
         LoginRequest request = new LoginRequest();
         request.setEmail("test@example.com");
@@ -121,7 +121,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção com credenciais inválidas")
+    @DisplayName("Should throw exception with invalid credentials")
     void shouldThrowExceptionWithInvalidCredentials() {
         LoginRequest request = new LoginRequest();
         request.setEmail("test@example.com");
@@ -137,7 +137,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção quando conta está bloqueada")
+    @DisplayName("Should throw exception when account is blocked")
     void shouldThrowExceptionWhenAccountIsBlocked() {
         LoginRequest request = new LoginRequest();
         request.setEmail("test@example.com");
@@ -151,7 +151,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve renovar token com sucesso")
+    @DisplayName("Should refresh token successfully")
     void shouldRefreshTokenSuccessfully() {
         RefreshTokenRequest request = new RefreshTokenRequest();
         request.setRefreshToken("validRefreshToken");
@@ -178,7 +178,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção com token de refresh inválido")
+    @DisplayName("Should throw exception with invalid refresh token")
     void shouldThrowExceptionWithInvalidRefreshToken() {
         RefreshTokenRequest request = new RefreshTokenRequest();
         request.setRefreshToken("invalidToken");
@@ -190,7 +190,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("Deve validar token de acesso com sucesso")
+    @DisplayName("Should validate access token successfully")
     void shouldValidateAccessTokenSuccessfully() {
         ValidateTokenRequest request = new ValidateTokenRequest();
         request.setToken("validToken");
